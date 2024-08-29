@@ -33,19 +33,15 @@ export class AppComponent {
     switch(stepSelected.stepName) {
       case 'Choose a language.':
         this.stepperCompletionValue = 8;
-        this.stepsList[0].isCompleted = false;
-        this.stepsList[1].isCompleted = false;
+        this.stepsList.forEach(step => step.isCompleted = step.stepName === 'Choose a language.');
         break;
       case 'Thinking or looking for a project.':
         this.stepperCompletionValue = 50;
-        this.stepsList[0].isCompleted = true;
-        this.stepsList[1].isCompleted = false;
-        console.log(this.stepsList[0]);
+        this.stepsList.forEach(step => step.isCompleted = step.stepName === 'Choose a language.' || step.stepName === 'Thinking or looking for a project.');
         break;
       case 'Start developing.':
         this.stepperCompletionValue = 90;
-        this.stepsList[0].isCompleted = true;
-        this.stepsList[1].isCompleted = true;
+        this.stepsList.forEach(step => step.isCompleted = true);
         break;
     }
   }
